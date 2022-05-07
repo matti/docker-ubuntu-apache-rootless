@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+case $1 in
+  run)
+    while true; do
+      docker-compose up --force-recreate --build || true
+      sleep 1
+    done
+  ;;
+  shell)
+    while true; do
+      docker-compose exec app bash || true
+      sleep 1
+    done
+  ;;
+esac
